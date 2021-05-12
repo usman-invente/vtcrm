@@ -15,30 +15,21 @@
             </div>
             <div class="content-body">
                 <!-- Dashboard Analytics Start -->
+                <h2>Admin Dashboard</h2>
                 <section id="dashboard-analytics">
                     <div class="row">
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="card bg-analytics text-white">
-                                <div class="card-content">
-                                    <div class="card-body text-center">
-                                        <img src="{{ asset('public/assets/app-assets/images/elements/decore-left.png') }}"
-                                            class="img-left" alt="
-            card-img-left">
-                                        <img src="{{ asset('public/assets/app-assets/images/elements/decore-right.png') }}"
-                                            class="img-right" alt="
-            card-img-right">
-                                        <div class="avatar avatar-xl bg-primary shadow mt-0">
-                                            <div class="avatar-content">
-                                                <i class="feather icon-award white font-large-1"></i>
-                                            </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <h1 class="mb-2 text-white">Congratulations John,</h1>
-                                            <p class="m-auto w-75">You have done <strong>57.6%</strong> more sales today.
-                                                Check your new badge in your profile.</p>
+                        <div class="col-lg-3 col-md-6 col-12">
+                            <div class="card">
+                                <div class="card-header d-flex flex-column align-items-start pb-0">
+                                    <div class="avatar bg-rgba-primary p-50 m-0">
+                                        <div class="avatar-content">
+                                            <i class="feather icon-users text-primary font-medium-5"></i>
                                         </div>
                                     </div>
+                                    <h2 class="text-bold-700 mt-1 mb-25">{{$active_tasks}}</h2>
+                                    <p  style="margin-bottom:25px!important" class="mb-0">Active Tasks</p>
                                 </div>
+                               
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-12">
@@ -49,12 +40,10 @@
                                             <i class="feather icon-users text-primary font-medium-5"></i>
                                         </div>
                                     </div>
-                                    <h2 class="text-bold-700 mt-1 mb-25">92.6k</h2>
-                                    <p class="mb-0">Subscribers Gained</p>
+                                    <h2 class="text-bold-700 mt-1 mb-25">{{$completed_task_today}}</h2>
+                                    <p  style="margin-bottom:25px!important" class="mb-0">Today Completed Tasks</p>
                                 </div>
-                                <div class="card-content">
-                                    <div id="subscribe-gain-chart"></div>
-                                </div>
+                             
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-12">
@@ -66,82 +55,66 @@
                                         </div>
                                     </div>
                                     <h2 class="text-bold-700 mt-1 mb-25">97.5K</h2>
-                                    <p class="mb-0">Orders Received</p>
+                                    <p  style="margin-bottom:25px!important" class="mb-0">Orders Received</p>
                                 </div>
-                                <div class="card-content">
-                                    <div id="orders-received-chart"></div>
+                               
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-12">
+                            <div class="card">
+                                <div class="card-header d-flex flex-column align-items-start pb-0">
+                                    <div class="avatar bg-rgba-warning p-50 m-0">
+                                        <div class="avatar-content">
+                                            <i class="feather icon-package text-warning font-medium-5"></i>
+                                        </div>
+                                    </div>
+                                    <h2 class="text-bold-700 mt-1 mb-25">97.5K</h2>
+                                    <p  style="margin-bottom:25px!important" class="mb-0">Orders Received</p>
                                 </div>
+                               
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="card">
+                            
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <div class="row pb-50">
-                                            <div
-                                                class="col-lg-6 col-12 d-flex justify-content-between flex-column order-lg-1 order-2 mt-lg-0 mt-2">
-                                                <div>
-                                                    <h2 class="text-bold-700 mb-25">2.7K</h2>
-                                                    <p class="text-bold-500 mb-75">Avg Sessions</p>
-                                                    <h5 class="font-medium-2">
-                                                        <span class="text-success">+5.2% </span>
-                                                        <span>vs last 7 days</span>
-                                                    </h5>
-                                                </div>
-                                                <a href="#" class="btn btn-primary shadow">View Details <i
-                                                        class="feather icon-chevrons-right"></i></a>
-                                            </div>
-                                            <div
-                                                class="col-lg-6 col-12 d-flex justify-content-between flex-column text-right order-lg-2 order-1">
-                                                <div class="dropdown chart-dropdown">
-                                                    <button class="btn btn-sm border-0 dropdown-toggle p-0" type="button"
-                                                        id="dropdownItem5" data-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        Last 7 Days
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-right"
-                                                        aria-labelledby="dropdownItem5">
-                                                        <a class="dropdown-item" href="#">Last 28 Days</a>
-                                                        <a class="dropdown-item" href="#">Last Month</a>
-                                                        <a class="dropdown-item" href="#">Last Year</a>
-                                                    </div>
-                                                </div>
-                                                <div id="avg-session-chart"></div>
-                                            </div>
-                                        </div>
-                                        <hr />
-                                        <div class="row avg-sessions pt-50">
-                                            <div class="col-6">
-                                                <p class="mb-0">Goal: $100000</p>
-                                                <div class="progress progress-bar-primary mt-25">
-                                                    <div class="progress-bar" role="progressbar" aria-valuenow="50"
-                                                        aria-valuemin="50" aria-valuemax="100" style="width:50%"></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <p class="mb-0">Users: 100K</p>
-                                                <div class="progress progress-bar-warning mt-25">
-                                                    <div class="progress-bar" role="progressbar" aria-valuenow="60"
-                                                        aria-valuemin="60" aria-valuemax="100" style="width:60%"></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <p class="mb-0">Retention: 90%</p>
-                                                <div class="progress progress-bar-danger mt-25">
-                                                    <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                                                        aria-valuemin="70" aria-valuemax="100" style="width:70%"></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <p class="mb-0">Duration: 1yr</p>
-                                                <div class="progress progress-bar-success mt-25">
-                                                    <div class="progress-bar" role="progressbar" aria-valuenow="90"
-                                                        aria-valuemin="90" aria-valuemax="100" style="width:90%"></div>
-                                                </div>
+                                        <div class="row" style="height:382px">
+                                            <h4  style="margin: 0px auto;" class="card-title">Tasks</h4>
+                                            <div class="table-responsive mt-1">
+                                                <table class="table table-hover-animation mb-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Task Title</th>
+                                                            <th>Status</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($tasks as $task)
+                                      
+                                                        <tr>
+                                                            <td>{{$task->task_title}}</td>
+                                                            @if($task->status == 1)
+                                                            <td><i class="fa fa-circle font-small-3 text-success mr-50"></i>Completed</td>
+                                                            @else
+                                                            <td> <i class="fa fa-circle font-small-3 text-danger mr-50"></i>Pending</td>
+                                                           
+                                                            @endif
+                                                            <td>
+                                                                <i style="color:blue;font-size:26px;cursor:pointer" data-id="{{ $task->id }}" class="feather icon-eye task-detail"></i>
+                                                               
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
+                                    
+                                        
                                     </div>
                                 </div>
                             </div>

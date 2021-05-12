@@ -58,7 +58,11 @@
     Route::delete('task/delete', 'LeadController@taskDelete')->name('admin.deletetask');
     Route::get('load/more', 'LeadController@loadMore')->name('admin.load_moreTasks');
     Route::get('get/tasks', 'LeadController@getTasks')->name('admin.gettasks');
-  
+    Route::get('mark/tasks', 'LeadController@markTask')->name('admin.marktask');
+    Route::get('add/task', 'LeadController@addTaskForm')->name('admin.addtaskform');
+    Route::post('add/task', 'LeadController@addTask')->name('admin.addtask');
+    Route::get('all/task', 'LeadController@allTasks')->name('admin.alltasks');
+    Route::post('all/task', 'LeadController@allTasksByAjax')->name('admin.alltasksbyajax');
     Route::fallback(function () {
         return abort(404);
     });

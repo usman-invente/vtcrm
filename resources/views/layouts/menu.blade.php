@@ -13,13 +13,8 @@
   <div class="shadow-bottom"></div>
   <div class="main-menu-content">
       <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-          <li class=" nav-item"><a href="index.html"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span><span class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>
-              <ul class="menu-content">
-                  <li class="active"><a href="dashboard-analytics.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Analytics</span></a>
-                  </li>
-                  <li><a href="dashboard-ecommerce.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">eCommerce</span></a>
-                  </li>
-              </ul>
+          <li class=" nav-item"><a href="{{route('admin.home')}}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
+              
           </li>
           <li class=" navigation-header"><span>Lead</span>
           </li>
@@ -27,13 +22,19 @@
           </li>
           <li class=" nav-item"><a href="{{route('admin.leadsheet')}}"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">LeadSheet</span></a>
           </li>
-          <li class=" nav-item"><a href="app-chat.html"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">Chat</span></a>
+          <li class=" navigation-header"><span>Tasks</span>
+          </li>
+          <li class=" nav-item"><a href="{{route('admin.addtaskform')}}"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">Add Task</span></a>
+          </li>
+          <li class=" nav-item"><a href="{{route('admin.alltasks')}}"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">All Tasks</span></a>
+          </li>
+          {{-- <li class=" nav-item"><a href="app-chat.html"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">Chat</span></a>
           </li>
           <li class=" nav-item"><a href="app-todo.html"><i class="feather icon-check-square"></i><span class="menu-title" data-i18n="Todo">Todo</span></a>
           </li>
           <li class=" nav-item"><a href="app-calender.html"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Calender</span></a>
-          </li>
-          <li class=" nav-item"><a href="#"><i class="feather icon-shopping-cart"></i><span class="menu-title" data-i18n="Ecommerce">Ecommerce</span></a>
+          </li> --}}
+          {{-- <li class=" nav-item"><a href="#"><i class="feather icon-shopping-cart"></i><span class="menu-title" data-i18n="Ecommerce">Ecommerce</span></a> --}}
               <ul class="menu-content">
                   <li><a href="app-ecommerce-shop.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Shop">Shop</span></a>
                   </li>

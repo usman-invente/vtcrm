@@ -15,11 +15,12 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('task_created_for');  //jis kay liyay task banaya
+            $table->string('task_created_for')->nullable();  //jis kay liyay task banaya
             $table->string('task_created_by');  //jis nay  task banaya
             $table->string('lead_id')->nullable();
             $table->string('task_tile');  
-            $table->string('task_description');  
+            $table->string('task_description');
+            $table->string('status')->default(0);    
             $table->timestamps();
         });
     }

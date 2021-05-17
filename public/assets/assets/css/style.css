@@ -18,3 +18,157 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     width: 85px;
     height: 85px;
 }
+
+.show-appointments {
+    margin-right: 0;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.add-appointments {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 415px;
+    height: 100%;
+    background: #FFFFFF;
+    z-index: 9999;
+    margin-right: -430px;
+    overflow-y: auto;
+    -webkit-box-shadow: -5px 0px 8px rgba(49, 81, 161, 0.1);
+    box-shadow: -5px 0px 8px rgba(49, 81, 161, 0.1);
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.show-appointments {
+    margin-right: 0;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.add-appointments .modal-header {
+    padding: 16px 32px;
+    padding: 16px 32px;
+    padding: 1rem 2rem;
+}
+
+.add-appointments .app-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.add-body {
+    padding: 15px 30px;
+}
+
+.add-body input[type="date"] {
+    display: block;
+    position: relative;
+    height: 40px;
+    color: #6D778E;
+    padding: .375rem .75rem;
+    font-size: 14px;
+    border: 1px solid #D5D8DF;
+    border-radius: 3px;
+    background: white url('../img/9. Calendar.svg')right 16px center no-repeat;
+    background: white url('../img/9. Calendar.svg')right 16px center no-repeat;
+    background: white url('../img/9. Calendar.svg')right 1rem center no-repeat;
+}
+
+.add-body input[type="date"]:focus {
+    outline: none;
+    border-color: #D5D8DF;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+ ::-webkit-datetime-edit {}
+
+ ::-webkit-datetime-edit-fields-wrapper {}
+
+ ::-webkit-datetime-edit-month-field:hover,
+ ::-webkit-datetime-edit-day-field:hover,
+ ::-webkit-datetime-edit-year-field:hover {
+    background: #fff;
+    color: #6D778E;
+}
+
+ ::-webkit-datetime-edit-text {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+
+ ::-webkit-clear-button,
+ ::-webkit-inner-spin-button {
+    display: none;
+}
+
+ ::-webkit-calendar-picker-indicator {
+    position: absolute;
+    width: 40px;
+    width: 40px;
+    width: 2.5rem;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    color: #fff;
+    background: #fff;
+}
+
+.add-body input[type="date"]:hover::-webkit-calendar-picker-indicator {
+    opacity: 0.05;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)";
+}
+
+.add-body input[type="date"]:hover::-webkit-calendar-picker-indicator:hover {
+    opacity: 0.15;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=15)";
+}
+
+.add-body .form-group label {
+    color: #343945;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+    text-transform: capitalize;
+    margin-bottom: 0;
+}
+
+.add-body .form-group label span {
+    color: #6D778E;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+    text-transform: lowercase;
+}
+
+.add-body .form-control {
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    padding: 6px 12px;
+    padding: .375rem .75rem;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6D778E;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #D5D8DF;
+    border-radius: .25rem;
+    -webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+    -webkit-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+    -o-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+}

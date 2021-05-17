@@ -32,6 +32,8 @@
                                             class="btn bg-gradient-primary mr-1 mb-1 waves-effect waves-light client">Mark
                                             As Client</button>
                                         @endif
+                                        <button style="margin-top: 18px;" data-id="{{ $lead->user_id }}" type="button"
+                                            class="btn bg-gradient-primary mr-1 mb-1 waves-effect waves-light  add-appi"><i style="font-size:16px"  class="feather icon-plus"></i> ADD TASK</button>
                                     </div>
                                 </div>
                                 <div class="row" style="margin-bottom:40px">
@@ -117,7 +119,7 @@
                                         <div class="row" style="height:382px">
                                             <h4  style="margin: 0px auto;" class="card-title">Tasks</h4>
                                             <div class="table-responsive mt-1">
-                                                <table class="table table-hover-animation mb-0">
+                                                <table class="table table-hover-animation mb-0" id="tasktable">
                                                     <thead>
                                                         <tr>
                                                             <th>Task Title</th>
@@ -134,7 +136,7 @@
                                                             <td><i class="fa fa-circle font-small-3 text-success mr-50"></i>Completed</td>
                                                             @else
                                                             <td>
-                                                                <div id="task-com">
+                                                                <div class="task-com{{$task->id}}">
                                                                     <i class="fa fa-circle font-small-3 text-danger mr-50"></i>Pending
                                                                 </div>
                                                                 
@@ -143,6 +145,7 @@
                                                             @endif
                                                             <td>
                                                                 <i style="color:blue;font-size:26px;cursor:pointer" data-id="{{ $task->id }}" class="feather icon-eye task-detail"></i>
+                                                                <i style="color:blue;font-size:26px;cursor:pointer" data-id="{{ $task->id }}" class="feather icon-check-square marktask"></i>
                                                                
                                                             </td>
                                                         </tr>
@@ -573,18 +576,60 @@
                     <div class="modal-body">
                         <p id="task-description"></p>
                     </div>
-                    <div class="modal-footer">
+                    {{-- <div class="modal-footer">
                         <button  type="button"  data-dismiss="modal" aria-label="Close" class="btn bg-gradient-info mr-1 mb-1 waves-effect waves-light">Cancel</button>
-                        <button data-id="" type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light marktask"><i class="feather icon-check"></i> Mark As Complete</button>
-                    </div>
+                        <button data-item="" type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light marktask"><i class="feather icon-check"></i> Mark As Complete</button>
+                    </div> --}}
 
                 </div>
             </div>
         </div>
         <!-- end task detail modal-->
+
+            <!-- add-appointments -->
+    <div class="add-appointments">
+        <div class="modal-header">
+            <h3 class="modal-title">Add Task</h3>
+            <i  style="font-size:26px;cursor:pointer;" class="feather icon-x-circle"></i>
+            </a>
+        </div>
+        <div class="add-body">
+            <form class="form form-vertical" id="addtaskform" >
+            @csrf
+                <div class="form-group">
+                    <label for="first-name-vertical">Task Name</label>
+                        <input type="text"  value="{{old('task_title')}}" class="form-control" name="task_title"
+                            id="inputEmail4" placeholder="Taskt Title">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="email-id-vertical">Task Description</label>
+                            <textarea  rows="5" cols="20" class="form-control" name="task_description"></textarea>
+                    </div>
+              
+                </div>
+               <!--  client-->
+              <input type="hidden" value="{{$lead->user->id}}" name="created_for">
+              <input type="hidden" value="{{$lead->id}}" name="lead_id">
+         
+        </div>
+
+        <div style="float:right">
+            <button type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light hide-appi" data-dismiss="modal" aria-label="Close">Close</button>
+            <button id="add-taskbtn" type="button" class="btn bg-gradient-primary mr-1 mb-1 waves-effect waves-light">ADD</button>
+            
+
+        </div>
+
+       
+         </form>
+
+    </div>
+    <!-- add-appointments -->
     </div>
 @endsection
 @section('script')
+  
     <script>
         $(document).on('click', '.client', function(e) {
             e.preventDefault();
@@ -633,13 +678,7 @@
 
         });
 
-        //add task
-        $("#add-task").click(function(e) {
-            e.preventDefault();
-            $("#addtask").modal('show')
-
-        });
-
+  
         $(document).on("click", ".task-detail" , function(e) {
             e.preventDefault();
             var id = $(this).data('id');
@@ -654,7 +693,6 @@
                         $("#task-title").text(data.task.task_title)
                         $("#task-description").text(data.task.task_description)
                         $("#task-detailModal").modal('show')
-                        $('.marktask').attr("data-id",data.task.id); //setter
                     } else {
 
                     }
@@ -687,7 +725,7 @@
                             title: data.message
                         })
 
-                        
+                        $(".add-appointments").removeClass("show-appointments");
                         allTasks();
                         
                         
@@ -763,25 +801,20 @@
 
         //get all tasks
         function allTasks(){
+            var id  = "{{$lead->id}}";
             $.ajax({
                 type: "get",
                 url: "{{ route('admin.gettasks') }}",
+                data:{id:id},
                 success: function(data) {
                     
                     if (data.status) {
                         var html = "";
-                            html += "<div   id='task"+data.task.id+"' class='d-flex justify-content-start align-items-center mb-1'>";
-                            html += "<div class='avatar mr-50'>";
-                            html += "<img src='{{ asset('public/assets/app-assets/images/portrait/small/avatar-s-5.png') }}'alt='avtar img holder' height='35' width='35'>";
-                            html += "</div>";
-                            html += "<div class='user-page-info'>";
-                            html += "<h6 class='mb-0'>"+data.task.task_title+"</h6>";
-                            html += "<span class='font-small-2'><i data-id='"+data.task.id+"'  style='font-size:16px;color: red;cursor:pointer;' class='feather icon-delete delete-task'></i></span>";
-                            html += "</div>";
-                            html += "<button data-id='"+data.task.id+"' type='button' class='btn btn-primary btn-icon ml-auto task-detail'> <i class='feather icon-eye'></i></button>";
-                            html += "</div>";
-                       
-                            $(".tasks").prepend(html);
+                            html += "<tr>";
+                            html += "<td>"+data.task.task_title+"</td>"; 
+                            html += "<td> <div class='task-com"+data.task.id+"'><i class='fa fa-circle font-small-3 text-danger mr-50'></i>Pending</div></td>";
+                            html += "<td><i style='color:blue;font-size:26px;cursor:pointer;' data-id='"+data.task.id+"' class='feather icon-eye task-detail'></i><i style='color:blue;font-size:26px;cursor:pointer' data-id='"+data.task.id+"' class='feather icon-check-square marktask'></i></td>";           
+                            $('#tasktable > tbody:last-child').append(html);
                     }
                     if (data.status == false) {
                         alert(data.message)
@@ -836,10 +869,9 @@
         }
 
         //mark task complete
-        $(".marktask").click(function(e) {
+            $(document).on("click", ".marktask" , function(e) {
             e.preventDefault();
             var id = $(this).data('id');
-    
             $.ajax({
                 type: "GET",
                 url: "{{ route('admin.marktask') }}",
@@ -859,7 +891,7 @@
                             title: data.message
                         })   
                         $("#task-detailModal").modal('hide')
-                        $("#task-com").html('<i class="fa fa-circle font-small-3 text-success mr-50"></i>Completed');
+                        $(".task-com"+id).html('<i class="fa fa-circle font-small-3 text-success mr-50"></i>Completed');
 
                     } else {
                         const Toast = Swal.mixin({
@@ -881,7 +913,18 @@
             });
 
         })
+    
+  
+    $(".add-appi").click(function() {
         
+        $(".add-appointments").addClass("show-appointments");
+        return false;
+    });
+
+    $(".hide-appi").click(function() {
+        $(".add-appointments").removeClass("show-appointments");
+        return false;
+    });
 
     </script>
 @endsection
